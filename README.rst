@@ -1,5 +1,5 @@
 ===================
-CAMB - Make Features Great Again
+CAMB - Make GSR Great Again
 ===================
 :CAMB: Code for Anisotropies in the Microwave Background
 :Author: Antony Lewis and Anthony Challinor
