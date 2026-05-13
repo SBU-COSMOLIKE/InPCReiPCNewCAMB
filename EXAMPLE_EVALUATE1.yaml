@@ -1,0 +1,393 @@
+timing: True
+debug: False
+stop_at_error: False
+
+likelihood:
+  planck_2018_highl_plik.TTTEEE_lite: 
+    path: ./external_modules/
+    clik_file: plc_3.0/hi_l/plik_lite/plik_lite_v22_TTTEEE.clik
+  planck_2018_lowl.TT: 
+    path: ./external_modules
+  planck_2018_lowl.EE:
+    path: ./external_modules
+params:
+  logA:
+    prior:
+      min: 2.8
+      max: 3.2
+    ref:
+      dist: norm
+      loc: 3.0448
+      scale: 0.05
+    proposal: 0.05
+    latex: \log(10^{10} A_\mathrm{s})
+    drop: true
+  As:
+    value: 'lambda logA: 1e-10*np.exp(logA)'
+    latex: A_\mathrm{s}
+  ns:
+    prior:
+      min: 0.92
+      max: 1.1
+    ref:
+      dist: norm
+      loc: 0.96605
+      scale: 0.005
+    proposal: 0.005
+    latex: n_\mathrm{s}
+  theta_MC_100:
+    prior:
+      min: 0.5
+      max: 10
+    ref:
+      dist: norm
+      loc: 1.04109
+      scale: 0.001
+    proposal: 0.001
+    latex: 100\theta_\mathrm{MC}
+    drop: true
+    renames: theta
+  cosmomc_theta:
+    value: 'lambda theta_MC_100: 1.e-2*theta_MC_100'
+    derived: false
+  H0:
+    latex: H_0
+    min: 20
+    max: 100
+  omegabh2:
+    prior:
+      min: 0.01
+      max: 0.03
+    ref:
+      dist: norm
+      loc: 0.022383
+      scale: 0.005
+    proposal: 0.005
+    latex: \Omega_\mathrm{b} h^2
+  omegach2:
+    prior:
+      min: 0.08
+      max: 0.16
+    ref:
+      dist: norm
+      loc: 0.12011
+      scale: 0.01
+    proposal: 0.01
+    latex: \Omega_\mathrm{c} h^2
+  tau:
+    prior:
+      min: 0.03
+      max: 0.15
+    ref:
+      dist: norm
+      loc: 0.055
+      scale: 0.01
+    proposal: 0.005
+    latex: \tau_\mathrm{reio}
+  w:
+    prior:
+      min: -3
+      max: -0.01
+    ref:
+      dist: norm
+      loc: -0.99
+      scale: 0.05
+    proposal: 0.05
+    latex: w_{0,\mathrm{DE}}
+  w0pwa:
+    prior:
+      min: -5 
+      max: -0.01
+    ref:
+      dist: norm
+      loc: -0.99
+      scale: 0.05
+    proposal: 0.05
+    latex: w_{0,\mathrm{DE}}+w_{a,\mathrm{DE}}
+    drop: true
+  wa:
+    value: 'lambda w0pwa, w: w0pwa - w'
+    latex: w_{a,\mathrm{DE}}
+  mnu:
+    value: 0.06
+  omegam:
+    derived: true
+  age:
+    derived: true
+    latex: '{\rm{Age}}/\mathrm{Gyr}'
+  rdrag:
+    derived: true
+    latex: r_\mathrm{drag}
+  yheused:
+    derived: true
+    latex: Y_P^\mathrm{BBN}
+  omegan2:
+    derived: true
+    latex: \Omega_\mathrm{\\nu} h^2
+  zstar:
+    derived: true
+    latex: z_*
+  rstar:
+    latex: r_*
+  thetastar:
+    latex: 100\theta_*
+  DAstar:
+    latex: D_\mathrm{A}/\mathrm{Gpc}
+  zdrag:
+    latex: z_\mathrm{drag}
+  kd:
+    latex: k_\mathrm{D}
+  thetad:
+    latex: 100\theta_\mathrm{D}
+  zeq:
+    latex: z_\mathrm{eq}
+  m0:
+    prior:
+      min: -5 
+      max: 5
+    ref:
+      dist: norm
+      loc: 0.0
+      scale: 0.05
+    proposal: 0.05
+    latex: m_0
+  m1:
+    prior:
+      min: -5 
+      max: 5
+    ref:
+      dist: norm
+      loc: 0.0
+      scale: 0.05
+    proposal: 0.05
+    latex: m_1
+  m2:
+    prior:
+      min: -5 
+      max: 5
+    ref:
+      dist: norm
+      loc: 0.0
+      scale: 0.05
+    proposal: 0.05
+    latex: m_2
+  m3:
+    prior:
+      min: -5 
+      max: 5
+    ref:
+      dist: norm
+      loc: 0.0
+      scale: 0.05
+    proposal: 0.05
+    latex: m_3
+  m4:
+    prior:
+      min: -5 
+      max: 5
+    ref:
+      dist: norm
+      loc: 0.0
+      scale: 0.05
+    proposal: 0.05
+    latex: m_4
+  m5:
+    prior:
+      min: -5 
+      max: 5
+    ref:
+      dist: norm
+      loc: 0.0
+      scale: 0.05
+    proposal: 0.05
+    latex: m_5
+  m6:
+    prior:
+      min: -5 
+      max: 5
+    ref:
+      dist: norm
+      loc: 0.0
+      scale: 0.05
+    proposal: 0.05
+    latex: m_6
+  m7:
+    prior:
+      min: -5 
+      max: 5
+    ref:
+      dist: norm
+      loc: 0.0
+      scale: 0.05
+    proposal: 0.05
+    latex: m_7
+  m8:
+    prior:
+      min: -5 
+      max: 5
+    ref:
+      dist: norm
+      loc: 0.0
+      scale: 0.05
+    proposal: 0.05
+    latex: m_{8}
+  m9:
+    prior:
+      min: -5 
+      max: 5
+    ref:
+      dist: norm
+      loc: 0.0
+      scale: 0.05
+    proposal: 0.05
+    latex: m_{9}
+  m10:
+    prior:
+      min: -5 
+      max: 5
+    ref:
+      dist: norm
+      loc: 0.0
+      scale: 0.05
+    proposal: 0.05
+    latex: m_{10}
+  m11:
+    prior:
+      min: -5 
+      max: 5
+    ref:
+      dist: norm
+      loc: 0.0
+      scale: 0.05
+    proposal: 0.05
+    latex: m_{11}
+  m12:
+    prior:
+      min: -5 
+      max: 5
+    ref:
+      dist: norm
+      loc: 0.0
+      scale: 0.05
+    proposal: 0.05
+    latex: m_{12}
+  m13:
+    prior:
+      min: -5 
+      max: 5
+    ref:
+      dist: norm
+      loc: 0.0
+      scale: 0.05
+    proposal: 0.05
+    latex: m_{13}
+  m14:
+    prior:
+      min: -5 
+      max: 5
+    ref:
+      dist: norm
+      loc: 0.0
+      scale: 0.05
+    proposal: 0.05
+    latex: m_{14}
+  m15:
+    prior:
+      min: -5 
+      max: 5
+    ref:
+      dist: norm
+      loc: 0.0
+      scale: 0.05
+    proposal: 0.05
+    latex: m_{15}
+  m16:
+    prior:
+      min: -5 
+      max: 5
+    ref:
+      dist: norm
+      loc: 0.0
+      scale: 0.05
+    proposal: 0.05
+    latex: m_{16}
+  m17:
+    prior:
+      min: -5 
+      max: 5
+    ref:
+      dist: norm
+      loc: 0.0
+      scale: 0.05
+    proposal: 0.05
+    latex: m_{17}
+  m18:
+    prior:
+      min: -5 
+      max: 5
+    ref:
+      dist: norm
+      loc: 0.0
+      scale: 0.05
+    proposal: 0.05
+    latex: m_{18}
+  m19:
+    prior:
+      min: -5 
+      max: 5
+    ref:
+      dist: norm
+      loc: 0.0
+      scale: 0.05
+    proposal: 0.05
+    latex: m_{19}
+theory:
+  InPCReiPC:
+    extra_args:
+      file_wkj: ./projects/InPCReiPC/data/wj_natural20smin200smax2e4.dat
+      file_xkj: ./projects/InPCReiPC/data/xj_natural20smin200smax2e4.dat
+      k0: 0.05
+  camb:
+    path: ./external_modules/code/CAMB
+    stop_at_error: False
+    use_renames: True
+    external_primordial_pk: True
+    extra_args:
+      halofit_version: takahashi
+      dark_energy_model: ppf
+      AccuracyBoost: 1.0
+      
+sampler:
+  evaluate:
+    N: 1
+    override:
+      logA: 3.044783832128357
+      ns: 0.9660499
+      omegabh2: 0.0223828
+      omegach2: 0.1201075
+      theta_MC_100: 1.04165
+      tau: 0.05430842
+      A_planck: 1.00138
+      w: -1.0
+      m0: 0.0
+      m1: 0.0
+      m2: 0.0
+      m3: 0.0
+      m4: 0.0
+      m5: 0.0
+      m6: 0.0
+      m7: 0.0
+      m8: 0.0
+      m9: 0.0
+      m10: 0.0
+      m11: 0.0
+      m12: 0.0
+      m13: 0.0
+      m14: 0.0
+      m15: 0.0
+      m16: 0.0
+      m17: 0.0
+      m18: 0.0
+      m19: 0.0
+      w0pwa: -1.0
+output: ./projects/InPCReiPC/chains/EXAMPLE_EVALUATE1
