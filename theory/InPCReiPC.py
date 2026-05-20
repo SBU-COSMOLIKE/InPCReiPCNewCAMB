@@ -132,16 +132,14 @@ class InPCReiPC(Theory):
     I1SR2 = np.pi**2 * (1.0 - ns)**2 / 8.0
 
     I1CONTRIBUTION_PIVOT = (
-      1.0
-      + 0.5 * (np.pi * (1.0 - ns) * bpivot + bpivot**2) / (1.0 + I1SR2)
+      1.0 + 0.5 * (np.pi * (1.0 - ns) * bpivot + bpivot**2) / (1.0 + I1SR2)
     )
 
     a = self._wkj @ mj
     b = self._xkj @ mj
 
     I1CONTRIBUTION = (
-      1.0
-      + 0.5 * (np.pi * (1.0 - ns) * b + b**2) / (1.0 + I1SR2)
+      1.0 + 0.5 * (np.pi * (1.0 - ns) * b + b**2) / (1.0 + I1SR2)
     )
 
     lnrat = np.log(self._k / self._k0)
@@ -162,6 +160,16 @@ class InPCReiPC(Theory):
       "Pk": ps,
       "effective_ns_for_nonlinear": ns,
     }
+
+    arg_k = I1SR2 + 0.5 * (np.pi * (1.0 - ns) * b + b**2)
+    I1PK = np.sqrt(max(np.max(arg_k), 0.0))
+
+    state["I1PK"] = I1PK;
+    state["derived"] = state.get("derived", {})
+    state["derived"]["I1PK"] = I1PK
+
+  def get_can_provide_params(self):
+    return ['I1PK']
 
   def get_primordial_scalar_pk(self):
     return self.current_state["primordial_scalar_pk"]

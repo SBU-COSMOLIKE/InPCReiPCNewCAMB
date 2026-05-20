@@ -10,6 +10,11 @@ likelihood:
     path: ./external_modules
   planck_2018_lowl.EE:
     path: ./external_modules
+  I1C:
+    external: "lambda _self: -np.inf if _self.provider.get_param('I1PK') > 0.7071067811 else 0.0"
+    requires:
+      I1PK: null
+
 params:
   logA:
     prior:
@@ -343,6 +348,7 @@ params:
     latex: m_{19}
 theory:
   InPCReiPC:
+    provides: ['I1PK']
     extra_args:
       file_wkj: ./projects/InPCReiPC/data/wj_natural20smin200smax2e4.dat
       file_xkj: ./projects/InPCReiPC/data/xj_natural20smin200smax2e4.dat
