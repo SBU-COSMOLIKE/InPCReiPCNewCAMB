@@ -44,7 +44,6 @@ testfile*
 chains/
 .ipynb_checkpoints/
 .ipynb_*
-*.sbatch
 data/*cov
 .VM*
 interface/.DS_Store
