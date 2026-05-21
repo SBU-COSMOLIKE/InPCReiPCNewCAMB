@@ -90,24 +90,10 @@ params:
     proposal: 0.005
     latex: \tau_\mathrm{reio}
   w:
-    prior:
-      min: -3
-      max: -0.01
-    ref:
-      dist: norm
-      loc: -0.99
-      scale: 0.05
-    proposal: 0.05
+    value: -1
     latex: w_{0,\mathrm{DE}}
   w0pwa:
-    prior:
-      min: -5 
-      max: -0.01
-    ref:
-      dist: norm
-      loc: -0.99
-      scale: 0.05
-    proposal: 0.05
+    value: -1
     latex: w_{0,\mathrm{DE}}+w_{a,\mathrm{DE}}
     drop: true
   wa:
@@ -404,7 +390,7 @@ sampler:
     blocking:
       - [1,
           [
-            logA, ns, 'theta_MC_100', omegabh2, omegach2, tau, w, w0pwa
+            logA, ns, 'theta_MC_100', omegabh2, omegach2, tau
           ]
         ]
       - [5,
@@ -436,4 +422,4 @@ sampler:
     # ---------------------------------------------------------------------
     # ---------------------------------------------------------------------
     # ---------------------------------------------------------------------
-output: ./projects/InPCReiPC/chains/EXAMPLE_MCMC2
+output: ./projects/InPCReiPC/chains/EXAMPLE_MCMC5

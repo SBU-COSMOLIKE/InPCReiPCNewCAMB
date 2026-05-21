@@ -79,7 +79,7 @@ params:
   tau:
     prior:
       min: 0.03
-      max: 0.15
+      max: 0.16
     ref:
       dist: norm
       loc: 0.055
@@ -387,7 +387,7 @@ sampler:
     blocking:
       - [1,
           [
-            logA, ns, 'theta_MC_100', omegabh2, omegach2, tau, w, w0pwa
+            logA, ns, 'theta_MC_100', omegabh2, omegach2, tau
           ]
         ]
       - [5,
