@@ -154,7 +154,7 @@ params:
   tau:
     prior:
       min: 0.03
-      max: 0.16
+      max: 0.11
     ref:
       dist: norm
       loc: 0.055
