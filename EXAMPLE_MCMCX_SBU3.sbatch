@@ -5,9 +5,9 @@
 #SBATCH -e MC-%A_%a.out.err
 #SBATCH --nodes=1
 #SBATCH --ntasks=5
-#SBATCH --cpus-per-task=48
-#SBATCH --partition=hbm-extended-96core
-#SBATCH --time=100:00:00
+#SBATCH --cpus-per-task=8
+#SBATCH --partition=hbm-long-96core
+#SBATCH --time=48:00:00
 
 # Clear the environment from any previously loaded modules
 module purge > /dev/null 2>&1

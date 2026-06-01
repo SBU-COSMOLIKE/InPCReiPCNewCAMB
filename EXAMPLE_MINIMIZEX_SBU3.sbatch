@@ -4,15 +4,12 @@
 #SBATCH --output=MC-%A_%a.out
 #SBATCH -e MC-%A_%a.out.err
 #SBATCH --nodes=1
-#SBATCH --ntasks=5
-#SBATCH --cpus-per-task=8
-#SBATCH --partition=extended-40core
-#SBATCH --time=100:00:00
+#SBATCH --ntasks=48
+#SBATCH --ntasks-per-socket=24
+#SBATCH --cpus-per-task=2
+#SBATCH --partition=hbm-long-96core
+#SBATCH --time=48:00:00
 #SBATCH --qos=user-high-100-priority-qos
-
-# Clear the environment from any previously loaded modules
-module purge > /dev/null 2>&1
-module load slurm
 
 echo Running on host `hostname`
 echo Time is `date`
@@ -43,7 +40,8 @@ else
   export OMP_NUM_THREADS=1
 fi
 
-${CONDA_PREFIX}/bin/mpirun -n ${SLURM_NTASKS} --oversubscribe \
+mpirun -n ${SLURM_NTASKS} --oversubscribe --mca pml ^ucx  \
   --mca btl vader,tcp,self --bind-to core:overload-allowed \
-  --map-by numa:pe=${OMP_NUM_THREADS} cobaya-run \
-  ./projects/InPCReiPC/EXAMPLE_MCMC${SLURM_ARRAY_TASK_ID}.yaml -r
+  --rank-by slot --map-by numa:pe=${OMP_NUM_THREADS}  \
+  python ./projects/InPCReiPC/EXAMPLE_MINIMIZE${SLURM_ARRAY_TASK_ID}.py --nstw 500 \
+    --root ./projects/InPCReiPC/ --outroot "EXAMPLE_MINIMIZE${SLURM_ARRAY_TASK_ID}"
