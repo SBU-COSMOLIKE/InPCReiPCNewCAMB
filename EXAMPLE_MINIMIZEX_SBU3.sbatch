@@ -1,8 +1,8 @@
 #!/bin/bash
 
-#SBATCH --job-name=MC
-#SBATCH --output=MC-%A_%a.out
-#SBATCH -e MC-%A_%a.out.err
+#SBATCH --job-name=MIN
+#SBATCH --output=MIN-%A_%a.out
+#SBATCH -e MIN-%A_%a.out.err
 #SBATCH --nodes=1
 #SBATCH --ntasks=48
 #SBATCH --ntasks-per-socket=24
