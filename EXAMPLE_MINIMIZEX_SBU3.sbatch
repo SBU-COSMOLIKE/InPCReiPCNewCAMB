@@ -43,5 +43,5 @@ fi
 mpirun -n ${SLURM_NTASKS} --oversubscribe --mca pml ^ucx  \
   --mca btl vader,tcp,self --bind-to core:overload-allowed \
   --rank-by slot --map-by numa:pe=${OMP_NUM_THREADS}  \
-  python ./projects/InPCReiPC/EXAMPLE_MINIMIZE${SLURM_ARRAY_TASK_ID}.py --nstw 500 \
+  python ./projects/InPCReiPC/EXAMPLE_MINIMIZE${SLURM_ARRAY_TASK_ID}.py --nstw 2000 \
     --root ./projects/InPCReiPC/ --outroot "EXAMPLE_MINIMIZE${SLURM_ARRAY_TASK_ID}"
