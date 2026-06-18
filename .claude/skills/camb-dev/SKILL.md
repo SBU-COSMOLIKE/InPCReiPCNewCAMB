@@ -18,12 +18,6 @@ Read `references/fortran-modifications.md` before touching any `.f90` file.
 Read `references/cobaya-integration.md` before writing or debugging a Cobaya
 `Theory` class or CAMB `extra_args`.
 
-When writing, reviewing, or explaining code or technical material, 
-be maximally didactic and transparent: assume I'm a novice in all APIs, 
-name anonymous constructs and the parameters they fill, define jargon 
-before use, and never call a step "obvious." 
-(Full version: didactic-transparent-explanations.md)
-
 ## Core principles
 
 1. **Fence everything.** Every modification to upstream CAMB Fortran is
